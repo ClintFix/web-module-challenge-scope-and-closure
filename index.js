@@ -90,7 +90,6 @@ function finalScore(inningCB, inningsToBePlayed){
     homeScore += inningCB();
     awayScore += inningCB();
     scoreKeeper.push({"Away": awayScore, "Home": homeScore});
-    // console.log(`Home is ${homeScore} and Away is ${awayScore}`);
   }
   console.log(scoreKeeper);
   return scoreKeeper[1];
@@ -148,10 +147,26 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScoreCB, inningCB, numberOfInnings) {
+  const scoreKeeper = [];
+  let awayTotalScore = 0;
+  let homeTotalScore = 0;
+  for (let i=0; i<numberOfInnings; i++){
+    const awayInningScore = inningCB();
+    const homeInningScore = inningCB();
+    scoreKeeper.push(`Inning ${i + 1}: Away ${awayInningScore} - Home ${homeInningScore}`);
+    awayTotalScore += awayInningScore;
+    homeTotalScore += homeInningScore;
+  }
+  if (awayTotalScore === homeTotalScore){
+    scoreKeeper.push(`This game will require extra innings: Away ${awayTotalScore} - Home ${homeTotalScore}`)
+  } else {
+    scoreKeeper.push(`Final Score: Away ${awayTotalScore} - Home ${homeTotalScore}`);
+  }
+  return scoreKeeper;
 }
 
+console.log(scoreboard(getInningScore, inning, 4));
 
 
 
