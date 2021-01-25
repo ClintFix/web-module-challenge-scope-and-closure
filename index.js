@@ -82,9 +82,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningCB, inningsToBePlayed){
+  const scoreKeeper = [];
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i=0; i<inningsToBePlayed; i++) {
+    homeScore += inningCB();
+    awayScore += inningCB();
+    scoreKeeper.push({"Away": awayScore, "Home": homeScore});
+    // console.log(`Home is ${homeScore} and Away is ${awayScore}`);
+  }
+  console.log(scoreKeeper);
+  return scoreKeeper[1];
 }
+console.log(finalScore(inning, 2));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
