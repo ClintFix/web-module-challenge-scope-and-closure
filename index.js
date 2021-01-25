@@ -28,11 +28,12 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+   - In counter 1, count only exists withing the function. In counter 2, count is a global variable
   2. Which of the two uses a closure? How can you tell?
-  
+     counter 1 uses a closure. It reaches up into counterMaker to get/referece count
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     counter 1 would generally be most preferable so that `count` isn't accidently messed with in another place in the code. Counter 2 would be preferable if you need to access count in multiple places thorughout your code. 
 */
 
 // counter1 code
@@ -62,8 +63,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() * 3);
 }
 
 
